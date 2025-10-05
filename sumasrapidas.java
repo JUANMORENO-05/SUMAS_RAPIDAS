@@ -1,7 +1,7 @@
 import java.util.*;
 import java.time.*;
 
-// Clase para representar un jugador
+
 class Jugador {
     String nombre;
     int puntaje;
@@ -26,7 +26,7 @@ class Nodo {
 class ListaDoblementeEnlazada {
     private Nodo cabeza;
 
-    // Agrega un jugador manteniendo orden descendente por puntaje
+
     public void agregarOrdenado(Jugador jugador) {
         Nodo nuevo = new Nodo(jugador);
 
@@ -38,7 +38,6 @@ class ListaDoblementeEnlazada {
         Nodo actual = cabeza;
         Nodo anterior = null;
 
-        // Insertar de mayor a menor puntaje
         while (actual != null && actual.jugador.puntaje >= jugador.puntaje) {
             anterior = actual;
             actual = actual.siguiente;
@@ -68,7 +67,7 @@ class ListaDoblementeEnlazada {
 
     // Muestra el ranking actual
     public void mostrarRanking() {
-        System.out.println("\n🏆 RANKING DE LOS 5 MEJORES JUGADORES 🏆");
+        System.out.println("\n RANKING DE LOS 5 MEJORES JUGADORES ");
         Nodo actual = cabeza;
         int pos = 1;
         while (actual != null) {
@@ -80,7 +79,6 @@ class ListaDoblementeEnlazada {
     }
 }
 
-// Clase principal del juego
 public class SumasRapidas {
     static Scanner sc = new Scanner(System.in);
     static Random rand = new Random();
@@ -104,10 +102,9 @@ public class SumasRapidas {
             if (!opcion.equals("s")) continuar = false;
         }
 
-        System.out.println("\nGracias por jugar 😄");
+        System.out.println("\nGracias por jugar ");
     }
 
-    // Método que controla el desarrollo del juego
     public static int jugar(String nombre) {
         int nivel = 1;
         int tiempoLimite = 10; // segundos por suma
@@ -115,7 +112,7 @@ public class SumasRapidas {
         boolean jugando = true;
 
         while (jugando) {
-            System.out.println("\n🧮 Nivel " + nivel + " (Tiempo: " + tiempoLimite + "s por suma)");
+            System.out.println("\n Nivel " + nivel + " (Tiempo: " + tiempoLimite + "s por suma)");
 
             for (int i = 1; i <= 5; i++) {
                 int a = rand.nextInt(50) + 1;
@@ -130,7 +127,7 @@ public class SumasRapidas {
                 try {
                     respuestaUsuario = sc.nextLine();
                 } catch (Exception e) {
-                    System.out.println("❌ Entrada inválida. Fin del juego.");
+                    System.out.println(" Entrada inválida. Fin del juego.");
                     return puntaje;
                 }
 
@@ -139,7 +136,7 @@ public class SumasRapidas {
 
                 // Validar tiempo
                 if (duracion > tiempoLimite) {
-                    System.out.println("⏰ Tiempo agotado. Fin del juego.");
+                    System.out.println("Tiempo agotado. Fin del juego.");
                     jugando = false;
                     break;
                 }
@@ -149,7 +146,7 @@ public class SumasRapidas {
                 try {
                     respuesta = Integer.parseInt(respuestaUsuario);
                 } catch (NumberFormatException e) {
-                    System.out.println("❌ Valor no válido. Fin del juego.");
+                    System.out.println(" Valor no válido. Fin del juego.");
                     jugando = false;
                     break;
                 }
@@ -157,9 +154,9 @@ public class SumasRapidas {
                 // Validar resultado
                 if (respuesta == resultado) {
                     puntaje += 100;
-                    System.out.println("✅ Correcto! +100 puntos (Tiempo usado: " + duracion + "s)");
+                    System.out.println(" Correcto! +100 puntos (Tiempo usado: " + duracion + "s)");
                 } else {
-                    System.out.println("❌ Incorrecto. El resultado era " + resultado);
+                    System.out.println(" Incorrecto. El resultado era " + resultado);
                     jugando = false;
                     break;
                 }
@@ -172,7 +169,7 @@ public class SumasRapidas {
             }
         }
 
-        System.out.println("\n🎯 " + nombre + ", tu puntaje final es: " + puntaje + " puntos.\n");
+        System.out.println("\n " + nombre + ", tu puntaje final es: " + puntaje + " puntos.\n");
         return puntaje;
     }
 }
